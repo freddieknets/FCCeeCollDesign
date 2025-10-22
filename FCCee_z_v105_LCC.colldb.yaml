@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+All:
+  - &ALL     { parking: 0.030 }
+
+families:
+  # Betatron cleaning
+  - &TCPH   { <<: *ALL,  gap: 8,    stage: primary,     material: MoGR,  length: 0.25   }
+  - &TCSH   { <<: *ALL,  gap: 9.5,  stage: secondary,   material: Mo,    length: 0.3    }
+  - &TCTH   { <<: *ALL,  gap: 11,   stage: tertiary,    material: MoGR,  length: 0.25   }
+  - &TCPV   { <<: *ALL,  gap: 50,   stage: primary,     material: MoGR,  length: 0.25,  angle: 90  }
+  - &TCSV   { <<: *ALL,  gap: 65,   stage: secondary,   material: Mo,    length: 0.3,   angle: 90  }
+  - &TCTV   { <<: *ALL,  gap: 65,   stage: tertiary,    material: MoGR,  length: 0.25,  angle: 90  }
+  # Momentum cleaning
+  - &TCPHP  { <<: *ALL,  gap: 15,   stage: primary,     material: MoGR,  length: 0.25   }
+  - &TCSHP  { <<: *ALL,  gap: 18,   stage: secondary,   material: Mo,    length: 0.3    }
+  # Synchrotron radiation
+  - &TCRH   { <<: *ALL,  gap: 12.5, stage: synchrotron, material: Iner,  length: 0.1    }
+  - &TCRV   { <<: *ALL,  gap: 77,   stage: synchrotron, material: Iner,  length: 0.1,   angle: 90  }
+
+emittance:
+  x: 62.466e-6   # gemitt_x = 0.7e-9
+  y: 0.17847e-6  # gemitt_y = 2e-12
+
+collimators:
+  b1:
+    tcp.h.b1:           { <<: *TCPH  }
+    tcs.h1.b1:          { <<: *TCSH  }
+    tcs.h2.b1:          { <<: *TCSH  }
+    tcp.v.b1:           { <<: *TCPV  }
+    tcs.v1.b1:          { <<: *TCSV  }
+    tcp.hh.b1:          { <<: *TCPH  }
+    tcs.hh1.b1:         { <<: *TCSH  }
+    tcs.hh2.b1:         { <<: *TCSH  }
+    tcp.vv.b1:          { <<: *TCPV  }
+    tcs.vv1.b1:         { <<: *TCSV  }
+    tcp.hp.b1:          { <<: *TCPHP }
+    tcs.hp1.b1:         { <<: *TCSHP }
+    tcs.hp2.b1:         { <<: *TCSHP }
